@@ -58,13 +58,13 @@ public class PercolationStats {
         				   sum_j++;
         				   if (sum_j == sum) {
         					   done = true;
-        					   open_nums[pi] -= 1;
+        					   open_nums[pi-1] -= 1;
         					   break;
         				   }
         			   }
         		   }
     		   } else {
-        		   sum -= open_nums[pi];
+        		   sum -= open_nums[pi-1];
     		   }
     		   if (done) {
     			   break;
