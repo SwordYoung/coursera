@@ -2,9 +2,9 @@ import java.util.Random;
 
 public class Percolation {
     private int mN;
-    public int[][] mParents_i, mParents_j;
-    public boolean[][] mOpenStatus;
-    public int[][] mSize;
+    private int[][] mParents_i, mParents_j;
+    private boolean[][] mOpenStatus;
+    private int[][] mSize;
     
    public Percolation(int N)                // create N-by-N grid, with all sites blocked
    {
@@ -138,7 +138,7 @@ public class Percolation {
        }
        return false;
    }
-   public void printStatus() {
+   private void printStatus() {
 	    int i;
 	    int j;
 	    for (i = 0; i < mN; i++) {

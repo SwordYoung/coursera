@@ -5,7 +5,7 @@ public class PercolationStats {
     private int mT;
     private double [] mOpenNums;
     private int [] mLeftnums;
-    Random randomGenerator;
+    private Random randomGenerator;
     
     // results
     private double mMean;
@@ -79,31 +79,6 @@ public class PercolationStats {
        Percolation p = new Percolation(mN);
        int open_num = 0;
        while (!p.percolates()) {
-//    	   int next_order = randomGenerator.nextInt(sum)+1;
-//    	   int pi = 0;
-//    	   int pj = 0;
-//    	   boolean done = false;
-//    	   for (pi = 1; pi <= mN; pi++) {
-//    		   if (next_order - open_nums[pi-1] <= 0) {
-//    			   int sum_j = 0;
-//        		   for (pj = 1; pj <= mN; pj++) {
-//        			   if (!p.isOpen(pi, pj)) {
-//        				   sum_j++;
-//        				   if (sum_j == next_order) {
-//        					   done = true;
-//        					   open_nums[pi-1] -= 1;
-//        					   sum--;
-//        					   break;
-//        				   }
-//        			   }
-//        		   }
-//    		   } else {
-//    			   next_order -= open_nums[pi-1];
-//    		   }
-//    		   if (done) {
-//    			   break;
-//    		   }
-//    	   }
     	   int [] new_open_pair = getRandomOpen(sum, p);
     	   sum--;
     	   int pi = new_open_pair[0];
@@ -143,7 +118,7 @@ public class PercolationStats {
        mConfHi = mMean + delta;
    }
    
-   public void run()
+   private void run()
    {
        int i;
        for (i = 0; i < mT; i++) {
