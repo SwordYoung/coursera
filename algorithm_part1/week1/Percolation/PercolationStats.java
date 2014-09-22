@@ -47,8 +47,8 @@ public class PercolationStats {
        int open_num = 0;
        while (!p.percolates()) {
     	   int next_order = randomGenerator.nextInt(sum);
-    	   int pi;
-    	   int pj;
+    	   int pi = 0;
+    	   int pj = 0;
     	   boolean done = false;
     	   for (pi = 0; pi < mN; pi++) {
     		   if (sum - open_nums[pi] < 0) {
