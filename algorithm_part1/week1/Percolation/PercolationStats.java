@@ -52,12 +52,12 @@ public class PercolationStats {
     	   int pj = 0;
     	   boolean done = false;
     	   for (pi = 1; pi <= mN; pi++) {
-    		   if (sum - open_nums[pi-1] < 0) {
+    		   if (next_order - open_nums[pi-1] < 0) {
     			   int sum_j = 0;
         		   for (pj = 1; pj <= mN; pj++) {
         			   if (!p.isOpen(pi, pj)) {
         				   sum_j++;
-        				   if (sum_j == sum) {
+        				   if (sum_j == next_order) {
         					   done = true;
         					   open_nums[pi-1] -= 1;
         					   break;
@@ -65,7 +65,7 @@ public class PercolationStats {
         			   }
         		   }
     		   } else {
-        		   sum -= open_nums[pi-1];
+    			   next_order -= open_nums[pi-1];
     		   }
     		   if (done) {
     			   break;
