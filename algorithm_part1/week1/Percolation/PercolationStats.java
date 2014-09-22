@@ -57,7 +57,7 @@ public class PercolationStats {
     	   }
     	   boolean done = false;
     	   for (pi = 1; pi <= mN; pi++) {
-    		   if (next_order - open_nums[pi-1] < 0) {
+    		   if (next_order - open_nums[pi-1] <= 0) {
     			   int sum_j = 0;
         		   for (pj = 1; pj <= mN; pj++) {
         			   if (!p.isOpen(pi, pj)) {
