@@ -8,6 +8,9 @@ public class Percolation {
     
    public Percolation(int N)                // create N-by-N grid, with all sites blocked
    {
+	   if (N <= 0) {
+		   throw new java.lang.IllegalArgumentException();
+	   }
        mN = N;
        mParents_i = new int[N][N];
        mParents_j = new int[N][N];

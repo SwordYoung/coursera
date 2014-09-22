@@ -13,6 +13,12 @@ public class PercolationStats {
     
    public PercolationStats(int N, int T)    // perform T independent computational experiments on an N-by-N grid
    {
+	   if (N <= 0) {
+		   throw new java.lang.IllegalArgumentException();
+	   }
+	   if (T <= 0) {
+		   throw new java.lang.IllegalArgumentException();
+	   }
        mN = N;
        mT = T;
        mOpenNums = new double[mT];
@@ -71,13 +77,9 @@ public class PercolationStats {
     			   break;
     		   }
     	   }
-    	   // System.out.println("opening: " + pi + " " + pj + " : " + open_num);
            if (!p.isOpen(pi, pj)) {
-        	   // System.out.println("opening: " + pi + " " + pj + " : " + open_num);
                p.open(pi, pj);
                open_num++;
-               
-               // p.printStatus();
            } else {
         	   System.out.println("ERROR for print!");
            }
@@ -94,11 +96,15 @@ public class PercolationStats {
        }
        mMean = sum / mT;
        
-       double stdsq = 0;
-       for (i = 0; i < mT; i++) {
-           stdsq += (mOpenNums[i] - mMean) * (mOpenNums[i] - mMean);
+       if (mT == 1) {
+    	   mStddev = 0;
+       } else {
+           double stdsq = 0;
+           for (i = 0; i < mT; i++) {
+               stdsq += (mOpenNums[i] - mMean) * (mOpenNums[i] - mMean);
+           }
+           mStddev = Math.sqrt(stdsq/(mT-1));
        }
-       mStddev = Math.sqrt(stdsq/(mT-1));
        
        double delta = 1.96 * mStddev / Math.sqrt(mT);
        mConfLo = mMean - delta;
