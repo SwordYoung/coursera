@@ -18,17 +18,17 @@ public class Percolation {
        for (j = 0; j < N; j++) {
            mParents_i[0][j] = -1;
            mParents_j[0][j] = -1;
-           
-           mOpenStatus[0][j] = false;
-           mSize[0][j] = 0;
        }
-       
        for (i = 1; i < N; i++) {
            for (j = 0; j < N; j++) {
                mParents_i[i][j] = i;
                mParents_j[i][j] = j;
+           }
+       }
+
+       for (i = 0; i < N; i++) {
+           for (j = 0; j < N; j++) {
                mOpenStatus[i][j] = false;
-               
                mSize[i][j] = 0;
            }
        }
@@ -38,7 +38,7 @@ public class Percolation {
            int [] r0 = root(i0, j0);
            int [] r1 = root(i1, j1);
            
-           System.out.println("connect: [" + i0 + ":" + j0 + "] and [" + i1 + ":" + j1 + "]");
+           // System.out.println("connect: [" + i0 + ":" + j0 + "] and [" + i1 + ":" + j1 + "]");
            if (r0[0] == -1) {
                if (r1[0] != -1) {
                    mParents_i[r1[0]][r1[1]] = -1;
@@ -100,32 +100,42 @@ public class Percolation {
        res[1] = mParents_j[i][j];
        return res;
    }
-   public void open(int i, int j)           // open site (row i, column j) if it is not already
+   private void p_open(int i, int j)           // open site (row i, column j) if it is not already
    {
-       i -= 1; j -= 1;
-//       if (isOpen(i+1, j+1)) {
-//           return;
-//       }
        mOpenStatus[i][j] = true;
        connect(i-1, j, i, j);
        connect(i+1, j, i, j);
        connect(i, j-1, i, j);
        connect(i, j+1, i, j);
    }
+   private boolean p_isOpen(int i, int j)      // is site (row i, column j) open?
+   {
+       return mOpenStatus[i][j];
+   }
+   private boolean p_isFull(int i, int j)      // is site (row i, column j) full?
+   {
+       int [] res = root(i,j);
+       return res[0] == -1;
+   }
+   
+   public void open(int i, int j)           // open site (row i, column j) if it is not already
+   {
+	   p_open(i-1, j-1);
+   }
    public boolean isOpen(int i, int j)      // is site (row i, column j) open?
    {
-       return mOpenStatus[i-1][j-1];
+	   return p_isOpen(i-1, j-1);
    }
    public boolean isFull(int i, int j)      // is site (row i, column j) full?
    {
-       int [] res = root(i-1,j-1);
-       return res[0] == -1;
+	   return p_isFull(i-1, j-1);
    }
+   
    public boolean percolates()              // does the system percolate?
    {
        int j;
        for (j = 0; j < mN; j++) {
-           if (isFull(mN, j+1)) {
+           if (p_isFull(mN-1, j)) {
                return true;
            }
        }
@@ -151,6 +161,7 @@ public class Percolation {
 	    	System.out.println();
 	    }
    }
+   
    public static void main(String[] args)   // test client, optional
    {
 	   /*
