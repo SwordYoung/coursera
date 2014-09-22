@@ -28,7 +28,7 @@ public class PercolationStats {
        mPers = new Percolation[mT];
        int i;
        for (i = 0; i < mT; i++) {
-    	   mPers = new Percolation(mN);
+    	   mPers[i] = new Percolation(mN);
        }
        mOpenNums = new double[mT];
        mLeftnums = new int[mN];
