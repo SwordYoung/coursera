@@ -130,6 +130,26 @@ public class Percolation {
        }
        return false;
    }
+   public void printStatus() {
+	    int i;
+	    int j;
+	    for (i = 0; i < mN; i++) {
+	    	for (j = 0; j < mN; j++) {
+	    		System.out.print("[" + mParents_i[i][j] + "\t:" + mParents_j[i][j] + "\t]")
+	    	}
+	    	System.out.println();
+	    }
+	    for (i = 0; i < mN; i++) {
+	    	for (j = 0; j < mN; j++) {
+	    		if (mOpenStatus[i][j]) {
+	    			System.out.print(".");
+	    		} else {
+	    			System.out.print("X");
+	    		}
+	    	}
+	    	System.out.println();
+	    }
+   }
    public static void main(String[] args)   // test client, optional
    {
 	   /*

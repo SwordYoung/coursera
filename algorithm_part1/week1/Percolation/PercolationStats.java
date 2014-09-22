@@ -49,6 +49,8 @@ public class PercolationStats {
             	   System.out.println("opening: " + pi + " " + pj + " : " + open_num);
                    p.open(pi, pj);
                    open_num++;
+                   
+                   p.printStatus();
                }
            }
        return open_num;
