@@ -42,7 +42,6 @@ public class PercolationStats {
     	   open_nums[i] = mN;
        }
        int sum = mN * mN;
-	   System.out.println("newround");
        
        Percolation p = new Percolation(mN);
        int open_num = 0;
