@@ -65,6 +65,7 @@ public class PercolationStats {
         				   if (sum_j == next_order) {
         					   done = true;
         					   open_nums[pi-1] -= 1;
+        					   sum--;
         					   break;
         				   }
         			   }
