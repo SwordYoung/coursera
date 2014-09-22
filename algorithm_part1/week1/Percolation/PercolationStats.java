@@ -36,7 +36,7 @@ public class PercolationStats {
    private int runOneSample()
    {
        Random randomGenerator = new Random();
-       int [] open_nums = new int(mN);
+       int [] open_nums = new int[mN];
        int i;
        for (i = 0; i < mN; i++) {
     	   open_nums = mN;
@@ -54,10 +54,11 @@ public class PercolationStats {
     		   if (sum - open_nums[pi] < 0) {
     			   int sum_j = 0;
         		   for (pj = 0; pj < mN; pj++) {
-        			   if (!p.isOpen()) {
+        			   if (!p.isOpen(pi+1, pj+1)) {
         				   sum_j++;
         				   if (sum_j == sum) {
         					   done = true;
+        					   open_nums[pi] -= 1;
         					   break;
         				   }
         			   }
