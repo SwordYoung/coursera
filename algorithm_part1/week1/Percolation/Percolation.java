@@ -34,7 +34,7 @@ public class Percolation {
        }
    }
    private void connect(int i0, int j0, int i1, int j1) {
-       if (i0 >= 0 && i0 <= mN-1 && j0 >= 0 && j0 <= mN-1 && mOpenStatus[i0][j0]) {
+       if (i0 >= 0 && i0 <= mN-1 && j0 >= 0 && j0 <= mN-1 && mOpenStatus[i0][j0] && mOpenStatus[i1][j1]) {
            int [] r0 = root(i0, j0);
            int [] r1 = root(i1, j1);
            
