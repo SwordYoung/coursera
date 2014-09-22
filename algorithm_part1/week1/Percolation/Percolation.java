@@ -103,9 +103,9 @@ public class Percolation {
    public void open(int i, int j)           // open site (row i, column j) if it is not already
    {
        i -= 1; j -= 1;
-       if (isOpen(i+1, j+1)) {
-           return;
-       }
+//       if (isOpen(i+1, j+1)) {
+//           return;
+//       }
        mOpenStatus[i][j] = true;
        connect(i-1, j-1, i, j);
        connect(i-1, j+1, i, j);
