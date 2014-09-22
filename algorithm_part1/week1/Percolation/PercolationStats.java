@@ -46,7 +46,7 @@ public class PercolationStats {
                int pi = randomGenerator.nextInt(mN)+1;
                int pj = randomGenerator.nextInt(mN)+1;
                if (!p.isOpen(pi, pj)) {
-            	   System.out.println("opening: " + pi + " " + pj + " : " + open_num)
+            	   System.out.println("opening: " + pi + " " + pj + " : " + open_num);
                    p.open(pi, pj);
                    open_num++;
                }
