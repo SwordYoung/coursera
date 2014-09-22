@@ -70,8 +70,7 @@ public class PercolationStats {
     			   break;
     		   }
     	   }
-//           int pi = randomGenerator.nextInt(mN)+1;
-//           int pj = randomGenerator.nextInt(mN)+1;
+    	   System.out.println("opening: " + pi + " " + pj + " : " + open_num);
            if (!p.isOpen(pi, pj)) {
         	   // System.out.println("opening: " + pi + " " + pj + " : " + open_num);
                p.open(pi, pj);
