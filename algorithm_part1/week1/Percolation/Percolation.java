@@ -7,7 +7,7 @@ public class Pair {
 	
 	public Pair() {
 		mX = -1;
-		mY = =1;
+		mY = -1;
 	}
 	public Pair(int x, int y) {
 		mX = x;
