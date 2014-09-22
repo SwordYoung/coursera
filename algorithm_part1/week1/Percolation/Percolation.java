@@ -38,6 +38,7 @@ public class Percolation {
            int [] r0 = root(i0, j0);
            int [] r1 = root(i1, j1);
            
+           System.out.println("connect: [" + i0 + ":" + j0 + "] and [" + i1 + ":" + j1 + "]")
            if (r0[0] == -1) {
                if (r1[0] != -1) {
                    mParents_i[r1[0]][r1[1]] = -1;
