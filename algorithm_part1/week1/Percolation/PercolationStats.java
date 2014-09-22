@@ -42,7 +42,6 @@ public class PercolationStats {
            int i = 0;
            while (!p.percolates()) {
         	   i += 1;
-        	   assert open_num < 10;
         	   System.out.println("i = " + i);
                int pi = randomGenerator.nextInt(mN)+1;
                int pj = randomGenerator.nextInt(mN)+1;
