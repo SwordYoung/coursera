@@ -53,7 +53,7 @@ public class PercolationStats {
     	   int k;
     	   System.out.println("Start to print: " + next_order);
     	   for (k = 0; k < mN; k++) {
-    		   System.out.println(open_nums[i]);
+    		   System.out.println(open_nums[k]);
     	   }
     	   boolean done = false;
     	   for (pi = 1; pi <= mN; pi++) {
@@ -79,7 +79,7 @@ public class PercolationStats {
     	   System.out.println("opening: " + pi + " " + pj + " : " + open_num);
     	   System.out.println("after to print");
     	   for (k = 0; k < mN; k++) {
-    		   System.out.println(open_nums[i]);
+    		   System.out.println(open_nums[k]);
     	   }
            if (!p.isOpen(pi, pj)) {
         	   // System.out.println("opening: " + pi + " " + pj + " : " + open_num);
