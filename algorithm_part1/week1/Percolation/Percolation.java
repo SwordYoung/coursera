@@ -50,62 +50,56 @@ public class Percolation {
            } else {
                if (r0[0] == r1[0] && r0[1] == r1[1]) {
                } else {
-                   mParents_i[r0[0]][r0[1]] = r1[0];
-                   mParents_j[r0[0]][r0[1]] = r1[1];
+                   // mParents_i[r0[0]][r0[1]] = r1[0];
+                   // mParents_j[r0[0]][r0[1]] = r1[1];
                    
-//                   int size0 = mSize[i0][j0];
-//                   int size1 = mSize[i1][j1];
-//                   if (size0 < size1) {
-//                       mParents_i[i0][j0] = r1[0];
-//                       mParents_j[i0][j0] = r1[1];
-//                       
-////                       mParents_i[r0[0]][r0[1]] = r1[0];
-////                       mParents_j[r0[0]][r0[1]] = r1[1];
-//                   } else if (size0 > size1) {
+                   int size0 = mSize[i0][j0];
+                   int size1 = mSize[i1][j1];
+                   if (size0 < size1) {
+//                        mParents_i[i0][j0] = r1[0];
+//                        mParents_j[i0][j0] = r1[1];
+                       
+                       mParents_i[r0[0]][r0[1]] = r1[0];
+                       mParents_j[r0[0]][r0[1]] = r1[1];
+                   } else if (size0 > size1) {
 //                       mParents_i[i1][j1] = r0[0];
 //                       mParents_j[i1][j1] = r0[1];
-////                       
-////                       mParents_i[r1[0]][r1[1]] = r0[0];
-////                       mParents_j[r1[0]][r1[1]] = r0[1];
-//                   } else {
+                       
+                       mParents_i[r1[0]][r1[1]] = r0[0];
+                       mParents_j[r1[0]][r1[1]] = r0[1];
+                   } else {
 //                       mParents_i[i1][j1] = r0[0];
 //                       mParents_j[i1][j1] = r0[1];
-//                       
-////                       mParents_i[r1[0]][r1[1]] = r0[0];
-////                       mParents_j[r1[0]][r1[1]] = r0[1];
-//                       
-//                       mSize[r0[0]][r0[1]] += 1;
-//                   }
+                       
+                       mParents_i[r1[0]][r1[1]] = r0[0];
+                       mParents_j[r1[0]][r1[1]] = r0[1];
+                       
+                       mSize[r0[0]][r0[1]] += 1;
+                   }
                }
            }
        }
    }
+   
    private int[] root(int i, int j) {
        if (i == -1) {
            int [] res = new int[2];
            res[0] = -1;
            res[1] = -1;
-           System.out.println("root0 of [" + i+":"+j+"] is [" + res[0] + ":" + res[1] + "]");
            return res;
        }
-       if ((mParents_i[i][j] != i) || (mParents_j[i][j] != j)) {
+       if (!(mParents_i[i][j] == i && mParents_j[i][j] == j)) {
            int [] res = root(mParents_i[i][j], mParents_j[i][j]);
-           if (res[0] == i && res[1] == j) {
-        	   System.out.println("ERROR! [" + i + ":" + j + "]");
-           }
            mParents_i[i][j] = res[0];
            mParents_j[i][j] = res[1];
-
-           System.out.println("root1 of [" + i+":"+j+"] is [" + res[0] + ":" + res[1] + "]");
            return res;
        }
        int [] res = new int[2];
        res[0] = mParents_i[i][j];
        res[1] = mParents_j[i][j];
-
-       System.out.println("root2 of [" + i+":"+j+"] is [" + res[0] + ":" + res[1] + "]");
        return res;
    }
+   
    private void p_open(int i, int j)           // open site (row i, column j) if it is not already
    {
        mOpenStatus[i][j] = true;
