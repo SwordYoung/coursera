@@ -135,6 +135,10 @@ public class Percolation {
    {
        int j;
        for (j = 0; j < mN; j++) {
+
+           int [] res = root(mN-1,j);
+           System.out.pringln("[" + mN-1 + ":" + j + "]'s root is: [" + res[0] + ":" + res[1] + "]");
+           
            if (p_isFull(mN-1, j)) {
                return true;
            }
