@@ -85,6 +85,7 @@ public class Percolation {
            int [] res = new int[2];
            res[0] = -1;
            res[1] = -1;
+           System.out.println("root0 of [" + i+":"+j+"] is [" + res[0] + ":" + res[1] + "]");
            return res;
        }
        if ((mParents_i[i][j] != i) && (mParents_j[i][j] != j)) {
@@ -94,11 +95,15 @@ public class Percolation {
            }
            mParents_i[i][j] = res[0];
            mParents_j[i][j] = res[1];
+
+           System.out.println("root1 of [" + i+":"+j+"] is [" + res[0] + ":" + res[1] + "]");
            return res;
        }
        int [] res = new int[2];
        res[0] = mParents_i[i][j];
        res[1] = mParents_j[i][j];
+
+       System.out.println("root2 of [" + i+":"+j+"] is [" + res[0] + ":" + res[1] + "]");
        return res;
    }
    private void p_open(int i, int j)           // open site (row i, column j) if it is not already
