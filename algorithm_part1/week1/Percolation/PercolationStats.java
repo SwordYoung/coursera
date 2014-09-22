@@ -56,6 +56,7 @@ public class PercolationStats {
     	   int pi = 0;
     	   int pj = 0;
     	   boolean done = false;
+    	   Pair new_open_pair;
     	   for (pi = 1; pi <= mN; pi++) {
     		   if (next_order - open_nums[pi-1] <= 0) {
     			   int sum_j = 0;
@@ -66,6 +67,7 @@ public class PercolationStats {
         					   done = true;
         					   open_nums[pi-1] -= 1;
         					   sum--;
+        					   new_open_pair = new Pair(pi, pj);
         					   break;
         				   }
         			   }
