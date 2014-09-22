@@ -135,7 +135,7 @@ public class Percolation {
 	    int j;
 	    for (i = 0; i < mN; i++) {
 	    	for (j = 0; j < mN; j++) {
-	    		System.out.print("[" + mParents_i[i][j] + "\t:" + mParents_j[i][j] + "\t]")
+	    		System.out.print("[" + mParents_i[i][j] + "\t:" + mParents_j[i][j] + "\t]");
 	    	}
 	    	System.out.println();
 	    }
