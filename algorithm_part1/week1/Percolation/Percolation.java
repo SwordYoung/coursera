@@ -87,8 +87,11 @@ public class Percolation {
            res[1] = -1;
            return res;
        }
-       if (mParents_i[i][j] != i && mParents_j[i][j] != j) {
+       if ((mParents_i[i][j] != i) && (mParents_j[i][j] != j)) {
            int [] res = root(mParents_i[i][j], mParents_j[i][j]);
+           if (res[0] == i && res[1] == j) {
+        	   System.out.println("ERROR! [" + i + ":" + j + "]");
+           }
            mParents_i[i][j] = res[0];
            mParents_j[i][j] = res[1];
            return res;
