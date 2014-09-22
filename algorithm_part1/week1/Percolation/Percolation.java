@@ -61,20 +61,20 @@ public class Percolation {
                        mParents_i[i0][j0] = r1[0];
                        mParents_j[i0][j0] = r1[1];
                        
-                       mParents_i[r0[0]][r0[1]] = r1[0];
-                       mParents_j[r0[0]][r0[1]] = r1[1];
+//                       mParents_i[r0[0]][r0[1]] = r1[0];
+//                       mParents_j[r0[0]][r0[1]] = r1[1];
                    } else if (size0 > size1) {
                        mParents_i[i1][j1] = r0[0];
                        mParents_j[i1][j1] = r0[1];
-                       
-                       mParents_i[r1[0]][r1[1]] = r0[0];
-                       mParents_j[r1[0]][r1[1]] = r0[1];
+//                       
+//                       mParents_i[r1[0]][r1[1]] = r0[0];
+//                       mParents_j[r1[0]][r1[1]] = r0[1];
                    } else {
                        mParents_i[i1][j1] = r0[0];
                        mParents_j[i1][j1] = r0[1];
                        
-                       mParents_i[r1[0]][r1[1]] = r0[0];
-                       mParents_j[r1[0]][r1[1]] = r0[1];
+//                       mParents_i[r1[0]][r1[1]] = r0[0];
+//                       mParents_j[r1[0]][r1[1]] = r0[1];
                        
                        mSize[r0[0]][r0[1]] += 1;
                    }
