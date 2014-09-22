@@ -50,6 +50,11 @@ public class PercolationStats {
     	   int next_order = randomGenerator.nextInt(sum)+1;
     	   int pi = 0;
     	   int pj = 0;
+    	   int k;
+    	   System.out.println("Start to print: " + next_order);
+    	   for (k = 0; k < mN; k++) {
+    		   System.out.println(open_nums[i]);
+    	   }
     	   boolean done = false;
     	   for (pi = 1; pi <= mN; pi++) {
     		   if (next_order - open_nums[pi-1] < 0) {
@@ -72,6 +77,10 @@ public class PercolationStats {
     		   }
     	   }
     	   System.out.println("opening: " + pi + " " + pj + " : " + open_num);
+    	   System.out.println("after to print");
+    	   for (k = 0; k < mN; k++) {
+    		   System.out.println(open_nums[i]);
+    	   }
            if (!p.isOpen(pi, pj)) {
         	   // System.out.println("opening: " + pi + " " + pj + " : " + open_num);
                p.open(pi, pj);
