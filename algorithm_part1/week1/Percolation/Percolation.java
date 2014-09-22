@@ -117,6 +117,9 @@ public class Percolation {
    }
    private boolean p_isFull(int i, int j)      // is site (row i, column j) full?
    {
+	   if (!p_isOpen(i, j)) {
+		   return false;
+	   }
        int [] res = root(i,j);
        return res[0] == -1;
    }
@@ -141,8 +144,6 @@ public class Percolation {
 
            int [] res = root(mN-1,j);
            int v = mN-1;
-           // System.out.println("[" + v + ":" + j + "]'s root is: [" + res[0] + ":" + res[1] + "]");
-           
            if (p_isFull(mN-1, j)) {
                return true;
            }
