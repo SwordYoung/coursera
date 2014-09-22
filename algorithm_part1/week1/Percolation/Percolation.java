@@ -107,10 +107,10 @@ public class Percolation {
 //           return;
 //       }
        mOpenStatus[i][j] = true;
-       connect(i-1, j-1, i, j);
-       connect(i-1, j+1, i, j);
-       connect(i+1, j-1, i, j);
-       connect(i+1, j+1, i, j);
+       connect(i-1, j, i, j);
+       connect(i+1, j, i, j);
+       connect(i, j-1, i, j);
+       connect(i, j+1, i, j);
    }
    public boolean isOpen(int i, int j)      // is site (row i, column j) open?
    {
