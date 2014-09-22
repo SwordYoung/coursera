@@ -36,23 +36,51 @@ public class PercolationStats {
    private int runOneSample()
    {
        Random randomGenerator = new Random();
+       int [] open_nums = new int(mN);
+       int i;
+       for (i = 0; i < mN; i++) {
+    	   open_nums = mN;
+       }
+       int sum = mN * mN;
        
        Percolation p = new Percolation(mN);
-           int open_num = 0;
-           int i = 0;
-           while (!p.percolates()) {
-        	   i += 1;
-        	   System.out.println("i = " + i);
-               int pi = randomGenerator.nextInt(mN)+1;
-               int pj = randomGenerator.nextInt(mN)+1;
-               if (!p.isOpen(pi, pj)) {
-            	   System.out.println("opening: " + pi + " " + pj + " : " + open_num);
-                   p.open(pi, pj);
-                   open_num++;
-                   
-                   p.printStatus();
-               }
+       int open_num = 0;
+       while (!p.percolates()) {
+    	   int next_order = randomGenerator.nextInt(sum);
+    	   int pi;
+    	   int pj;
+    	   boolean done = false;
+    	   for (pi = 0; pi < mN; pi++) {
+    		   if (sum - open_nums[pi] < 0) {
+    			   int sum_j = 0;
+        		   for (pj = 0; pj < mN; pj++) {
+        			   if (!p.isOpen()) {
+        				   sum_j++;
+        				   if (sum_j == sum) {
+        					   done = true;
+        					   break;
+        				   }
+        			   }
+        		   }
+    		   } else {
+        		   sum -= open_nums[pi];
+    		   }
+    		   if (done) {
+    			   break;
+    		   }
+    	   }
+//           int pi = randomGenerator.nextInt(mN)+1;
+//           int pj = randomGenerator.nextInt(mN)+1;
+           if (!p.isOpen(pi, pj)) {
+        	   // System.out.println("opening: " + pi + " " + pj + " : " + open_num);
+               p.open(pi, pj);
+               open_num++;
+               
+               // p.printStatus();
+           } else {
+        	   System.out.println("ERROR for print!");
            }
+       }
        return open_num;
    }
    private void calculate()
