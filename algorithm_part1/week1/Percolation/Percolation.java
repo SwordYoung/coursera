@@ -1,27 +1,5 @@
 import java.util.Random;
 
-public class Pair {
-	public int mX;
-	public int mY;
-
-	
-	public Pair() {
-		mX = -1;
-		mY = -1;
-	}
-	public Pair(int x, int y) {
-		mX = x;
-		mY = y;
-	}
-	
-	public int x() {
-		return mX-1;
-	}
-	public int y() {
-		return mY-1;
-	}
-}
-
 public class Percolation {
     private int mN;
     public int[][] mParents_i, mParents_j;
