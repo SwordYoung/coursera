@@ -39,7 +39,7 @@ public class PercolationStats {
        int [] open_nums = new int[mN];
        int i;
        for (i = 0; i < mN; i++) {
-    	   open_nums = mN;
+    	   open_nums[i] = mN;
        }
        int sum = mN * mN;
        
