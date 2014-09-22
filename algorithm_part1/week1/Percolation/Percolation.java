@@ -137,7 +137,8 @@ public class Percolation {
        for (j = 0; j < mN; j++) {
 
            int [] res = root(mN-1,j);
-           System.out.pringln("[" + (mN-1) + ":" + j + "]'s root is: [" + res[0] + ":" + res[1] + "]");
+           int v = mN-1;
+           System.out.println("[" + v + ":" + j + "]'s root is: [" + res[0] + ":" + res[1] + "]");
            
            if (p_isFull(mN-1, j)) {
                return true;
