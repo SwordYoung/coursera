@@ -7,6 +7,8 @@ public class PercolationStats {
     private int [] mLeftnums;
     private Random randomGenerator;
     
+    private Percolation [] mPers;
+    
     // results
     private double mMean;
     private double mStddev;
@@ -15,14 +17,19 @@ public class PercolationStats {
     
    public PercolationStats(int N, int T)    // perform T independent computational experiments on an N-by-N grid
    {
-	   if (N <= 0) {
-		   throw new java.lang.IllegalArgumentException();
-	   }
-	   if (T <= 0) {
-		   throw new java.lang.IllegalArgumentException();
-	   }
+       if (N <= 0) {
+           throw new java.lang.IllegalArgumentException();
+       }
+       if (T <= 0) {
+           throw new java.lang.IllegalArgumentException();
+       }
        mN = N;
        mT = T;
+       mPers = new Percolation[mT];
+       int i;
+       for (i = 0; i < mT; i++) {
+    	   mPers = new Percolation(mN);
+       }
        mOpenNums = new double[mT];
        mLeftnums = new int[mN];
        randomGenerator = new Random();
@@ -44,54 +51,54 @@ public class PercolationStats {
        return mConfHi;
    }
    private int [] getRandomOpen(int sum, Percolation p) {
-	   int next_order = randomGenerator.nextInt(sum)+1;
-	   int [] res = new int[2];
-	   res[0] = 0; res[1] = 0;
-	   
-	   for (res[0] = 1; res[0] <= mN; res[0]++) {
-		   if (next_order - mLeftnums[res[0]-1] <= 0) {
-			   int sum_j = 0;
-    		   for (res[1] = 1; res[1] <= mN; res[1]++) {
-    			   if (!p.isOpen(res[0], res[1])) {
-    				   sum_j++;
-    				   if (sum_j == next_order) {
-    					   mLeftnums[res[0]-1] -= 1;
-    					   return res;
-    				   }
-    			   }
-    		   }
-		   } else {
-			   next_order -= mLeftnums[res[0]-1];
-		   }
-	   }
-	   return res;
+       int nextorder = randomGenerator.nextInt(sum)+1;
+       int [] res = new int[2];
+       res[0] = 0; res[1] = 0;
+       
+       for (res[0] = 1; res[0] <= mN; res[0]++) {
+           if (nextorder - mLeftnums[res[0]-1] <= 0) {
+               int sum_j = 0;
+               for (res[1] = 1; res[1] <= mN; res[1]++) {
+                   if (!p.isOpen(res[0], res[1])) {
+                       sum_j++;
+                       if (sum_j == nextorder) {
+                           mLeftnums[res[0]-1] -= 1;
+                           return res;
+                       }
+                   }
+               }
+           } else {
+               nextorder -= mLeftnums[res[0]-1];
+           }
+       }
+       return res;
    }
    
    private int runOneSample()
    {
-       // int [] open_nums = new int[mN];
+       // int [] opennums = new int[mN];
        int i;
        for (i = 0; i < mN; i++) {
-    	   mLeftnums[i] = mN;
+           mLeftnums[i] = mN;
        }
        int sum = mN * mN;
        
        Percolation p = new Percolation(mN);
-       int open_num = 0;
+       int opennum = 0;
        while (!p.percolates()) {
-    	   int [] new_open_pair = getRandomOpen(sum, p);
-    	   sum--;
-    	   int pi = new_open_pair[0];
-    	   int pj = new_open_pair[1];
-    	   
+           int [] newpair = getRandomOpen(sum, p);
+           sum--;
+           int pi = newpair[0];
+           int pj = newpair[1];
+           
            if (!p.isOpen(pi, pj)) {
                p.open(pi, pj);
-               open_num++;
+               opennum++;
            } else {
-        	   System.out.println("ERROR for print!");
+               System.out.println("ERROR for print!");
            }
        }
-       return open_num;
+       return opennum;
    }
    private void calculate()
    {
@@ -104,7 +111,7 @@ public class PercolationStats {
        mMean = sum / mT;
        
        if (mT == 1) {
-    	   mStddev = 0;
+           mStddev = 0;
        } else {
            double stdsq = 0;
            for (i = 0; i < mT; i++) {
@@ -122,8 +129,8 @@ public class PercolationStats {
    {
        int i;
        for (i = 0; i < mT; i++) {
-           int open_num = runOneSample();
-           mOpenNums[i] = (double)open_num / (mN*mN);
+           int opennum = runOneSample();
+           mOpenNums[i] = (double) opennum / (mN * mN);
        }   
        calculate();
    }
