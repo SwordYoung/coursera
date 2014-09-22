@@ -49,6 +49,7 @@ public class Percolation {
            } else if (r1[0] == -1) {
                mParents_i[i0][j0] = -1;
                mParents_j[i0][j0] = -1;
+               
                mParents_i[r0[0]][r0[1]] = -1;
                mParents_j[r0[0]][r0[1]] = -1;
                return;
@@ -124,6 +125,7 @@ public class Percolation {
    }
    public static void main(String[] args)   // test client, optional
    {
+	   /*
        int n = 10;
        Percolation p = new Percolation(n);
        
@@ -133,6 +135,6 @@ public class Percolation {
            int i = randomGenerator.nextInt(n)+1;
            int j = randomGenerator.nextInt(n)+1;
            p.open(i, j);
-       }
+       } */
    }
 }

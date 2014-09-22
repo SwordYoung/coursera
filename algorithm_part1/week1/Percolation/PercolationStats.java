@@ -39,10 +39,14 @@ public class PercolationStats {
        
        Percolation p = new Percolation(mN);
            int open_num = 0;
+           int i = 0;
            while (!p.percolates()) {
+        	   i += 1;
+        	   System.out.println("i = " + i);
                int pi = randomGenerator.nextInt(mN)+1;
                int pj = randomGenerator.nextInt(mN)+1;
                if (!p.isOpen(pi, pj)) {
+            	   System.out.println("opening: " + pi + " " + pj + " : " + open_num)
                    p.open(pi, pj);
                    open_num++;
                }
@@ -69,15 +73,14 @@ public class PercolationStats {
        mConfLo = mMean - delta;
        mConfHi = mMean + delta;
    }
+   
    public void run()
    {
-       
        int i;
        for (i = 0; i < mT; i++) {
            int open_num = runOneSample();
            mOpenNums[i] = (double)open_num / (mN*mN);
-       }
-       
+       }   
        calculate();
    }
    public static void main(String[] args)   // test client, described below
