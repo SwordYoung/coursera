@@ -74,7 +74,7 @@ public class PercolationStats {
        return res;
    }
    
-   private int runOneSample()
+   private int runOneSample(int round)
    {
        // int [] opennums = new int[mN];
        int i;
@@ -83,7 +83,7 @@ public class PercolationStats {
        }
        int sum = mN * mN;
        
-       Percolation p = new Percolation(mN);
+       Percolation p = mPers[round]; // new Percolation(mN);
        int opennum = 0;
        while (!p.percolates()) {
            int [] newpair = getRandomOpen(sum, p);
@@ -129,7 +129,7 @@ public class PercolationStats {
    {
        int i;
        for (i = 0; i < mT; i++) {
-           int opennum = runOneSample();
+           int opennum = runOneSample(i);
            mOpenNums[i] = (double) opennum / (mN * mN);
        }   
        calculate();
